@@ -1,16 +1,20 @@
 package sample;
 
 import javafx.application.Application;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Arc;
+import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -24,14 +28,31 @@ public class Main extends Application {
         BorderPane pane = new BorderPane();
         pane.setTop(getHBox());
         pane.setLeft(getVBox());
-        // testing font
+        Rectangle r1 = new Rectangle(10, 10, 10, 10);
+        Ellipse e1 = new Ellipse(100, 100, 100, 100);
+        Arc a1 = new Arc(150, 100,50, 50, 80, 30);
+        Line l1 = new Line(10, 10, 10, 10);
+
+        StackPane stkPane = new StackPane();
+        FlowPane flwPane = new FlowPane();
+        TextField tfTxt = new TextField();
+
+        ListView<String> lstView = new ListView<>();
+        ObservableList<String> obslListView = lstView.getItems();
+
+        ComboBox<String> cbxMembers = new ComboBox<>();
+        ObservableList<String> obslMembers = cbxMembers.getItems();
+        obslMembers.addAll("Member 1", "Member 2");
+
+        Text txt = new Text(20, 20, "Test This ");
+        Color c1 = Color.GOLD;
+        Color c2 = new Color(1, .8, .2, .5);
+        txt.setFill(Color.GREEN);
+        txt.setUnderline(true);
         Font fontTst = new Font("SansSerif", 19);
         Font fontTst2 = Font.font("SansSerif", FontWeight.NORMAL, FontPosture.REGULAR, 19);
-
-        // testing color
-//        Color colorTst = new Color(1, 1, 1, 5.5);
-//        Color colorTst2 = Color.color(55, 123, 22);
-
+        txt.setFont(fontTst);
+        pane.setRight(txt);
 
         primaryStage.setScene(new Scene(pane, 300, 275));
         primaryStage.show();
